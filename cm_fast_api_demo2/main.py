@@ -1,23 +1,23 @@
-
-
-
 from typing import Optional
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World", "MyName": "Lek CodeMobiles"}
+def get_root():
+    return {"root":"yes"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = "none"):
-    return {"item_id": item_id, "q": q}
+@app.get("/courses")
+def get_courses():
+    return ["Angular", "Vuejs"]
 
-# http://localhost:8000/courses/1/bangkok?q=lek
-@app.get("/courses/{course_id}/{place}")
-def get_courses(course_id: int, place: str,  q: Optional[str] = None, price: Optional[int] = 0):
-    return {"course_id": course_id, "q": q, "price":price, "place": place}
+@app.get("/course/{id}")
+def get_course_by_id(id:int):
+    return ["Angular", "Vuejs"][id]
+
+# pydantic
+@app.get("/auth/{action}/{token}")
+def get_action_and_token(action:str, token:str, q1:Optional[str]=None):
+    return {"action":action, "token":token, "q1": q1}

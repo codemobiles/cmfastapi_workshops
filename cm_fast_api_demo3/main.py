@@ -8,18 +8,13 @@ class User(BaseModel):
 
 app = FastAPI()
 
-@app.get("/login")
-def login():
-    return {"login": "get success"}
-
+# curl tutorial
+# https://www.youtube.com/watch?v=--LEfrXsx7g
 
 @app.post("/login")
-def login():
-    return {"login": "post success"}
+def post_login():
+    return {"login": "yes"}
 
 @app.post("/register")
-def register(user:User):
-    return {"register": "post success", "detail":user}    
-
-
-# https://www.youtube.com/watch?v=--LEfrXsx7g    
+def post_register(user:User):
+    return {"register": user}    
