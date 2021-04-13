@@ -1,0 +1,1 @@
+i am static folder
